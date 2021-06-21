@@ -72,7 +72,7 @@ export default {
       items: [
         {
           icon: 'mdi-apps',
-          title: 'Welcome',
+          title: 'Top',
           to: '/',
         },
         {
@@ -80,11 +80,41 @@ export default {
           title: 'Inspire',
           to: '/inspire',
         },
+        {
+          icon: 'mdi-apps',
+          title: 'あなたの投稿作品',
+          to: '/display',
+        },
+        {
+          icon: 'mdi-apps',
+          title: '作品を投稿する',
+          to: '/post',
+        },
+        {
+          icon: 'mdi-apps',
+          title: '部誌置き場',
+          to: '/notebook',
+        },
+        {
+          icon: 'mdi-apps',
+          title: '部室',
+          to: '/list',
+        },
+        {
+          icon: 'mdi-apps',
+          title: 'リクエスト',
+          to: '/request',
+        },
+        {
+          icon: 'mdi-apps',
+          title: 'contact',
+          to: '/contact',
+        },
       ],
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'Vuetify.js',
+      title: 'ぶんげい！',
     }
   },
 }
