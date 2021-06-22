@@ -87,11 +87,6 @@ export default {
         },
         {
           icon: 'mdi-apps',
-          title: '作品を投稿する',
-          to: '/post',
-        },
-        {
-          icon: 'mdi-apps',
           title: '部誌置き場',
           to: '/notebook',
         },
