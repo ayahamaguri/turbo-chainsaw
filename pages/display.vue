@@ -10,7 +10,22 @@
               >
             </template>
             <v-sheet class="text-center">
-              <v-breadcrumbs :items="categories" large></v-breadcrumbs>
+              <v-btn
+                color="purple"
+                dark
+                href="/novelform"
+                v-bind="attrs"
+                v-on="on"
+                >小説を投稿する</v-btn
+              >
+              <v-btn
+                color="orange"
+                dark
+                href="/imgform"
+                v-bind="attrs"
+                v-on="on"
+                >イラストを投稿する</v-btn
+              >
             </v-sheet>
           </v-bottom-sheet>
         </v-col>
@@ -18,31 +33,27 @@
     </v-container>
     <v-container>
       <v-row justify="center">
-        <v-col cols="12" lg="2">
-          <Cards />
-        </v-col>
+        <!--  <v-col
+          v-for="(noveldata, index) in NovelData"
+          :key="index"
+          cols="12"
+          lg="2"
+        > -->
+        <div class="display">
+          <Cards></Cards>
+        </div>
+        <!-- </v-col> -->
       </v-row>
     </v-container>
   </div>
 </template>
 <script type="ts">
-import { defineComponent, ref } from '@vue/composition-api'
+import { defineComponent, } from '@vue/composition-api'
 
 export default defineComponent({
+  components: { }
   setup() {
-    const categories = ref([
-      {
-        text: 'イラストを投稿する',
-        to: '/imgform',
-      },
-      {
-        text: '小説を投稿する',
-        to: '/novelform',
-      },
-    ])
-    return {
-      categories,
-    }
+
   },
 })
 </script>
