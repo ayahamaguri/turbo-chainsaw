@@ -13,11 +13,11 @@
 <script type="ts">
 import { defineComponent} from '@nuxtjs/composition-api'
 export default defineComponent({
-  name: 'ImgData',
+  name: 'ImgDatas',
   props: {
     img:{
           type: Image,
-          default: '',
+          default: any,
       },
       ititle:{
           type: String,
