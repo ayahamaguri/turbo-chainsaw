@@ -33,14 +33,14 @@
     </v-container>
     <v-container>
       <v-row justify="center">
-        <!--  <v-col
+        <!-- <v-col
           v-for="(noveldata, index) in NovelData"
           :key="index"
           cols="12"
           lg="2"
         > -->
         <div class="display">
-          <Cards></Cards>
+          <cards></cards>
         </div>
         <!-- </v-col> -->
       </v-row>
@@ -49,11 +49,19 @@
 </template>
 <script type="ts">
 import { defineComponent, } from '@vue/composition-api'
+import Cards from '~/components/Cards.vue'
 
 export default defineComponent({
-  components: { }
-  setup() {
-
-  },
+  components: { Cards },
+  setup(){
+      // const NovelDatas = ref([
+      //   {
+      //    sample:'',
+      //   }
+      // ])
+      // return{
+      //   NovelDatas
+      // }
+    }
 })
 </script>
