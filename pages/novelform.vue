@@ -1,128 +1,83 @@
 <template>
   <div>
-    <!-- <v-row>
-      <v-col
-        v-for="(noveldata, index) in NovelDatas"
-        :key="index"
-        cols="12"
-        lg="6"
-      > -->
-    <!-- <div id="novelform">
-          <v-form id="nform">
-            <v-text-field :counter="30" label="タイトル"></v-text-field>
-            <v-textarea label="本文"></v-textarea>
-            <v-textarea label="説明文など"></v-textarea>
-            <v-text-field :counter="30" label="タグ"></v-text-field>
-            <v-text-field label="サンプル数字"></v-text-field>
-            <v-btn @click="increment">+</v-btn>
-          </v-form>
-        </div> -->
-    <!-- <div id="sampleform">
-      <v-form id="sampleform"> -->
-    <!-- <input v-model="newTitle" /> -->
-    <!-- <v-text-field :id="taitle" v-model="newTitle"></v-text-field>
-      </v-form>
-    </div>
-    <v-btn id="sampleform" type="submit" @click="hyouji(), log()"
-      >samplesubmit</v-btn
-    >
-    <p>bind:{{ taitle }}</p> -->
-    <!-- <p>nyuryoku:{{ newTitle }}</p> -->
-    <!-- <p>syuturyoku:{{ syuturyoku.value }}</p> -->
-    <!-- <p v-for="title in syuturyoku" id="hl" :key="title">title:{{ title }}</p> -->
-    <div id="app1">
-      <a :href="link">{{ link }}</a>
-      <v-btn value="" @click="link = 'https://google.com/'"
-        >リンクをグーグルに変更</v-btn
-      >
-      <v-btn value="" @click="link = 'https://yahoo.co.jp/'"
-        >リンクをyahooに変更</v-btn
-      >
-    </div>
     <div id="formsample">
-      <v-form>
-        <v-text-field :v-model="newtitle">title nyu-ryoku</v-text-field>
-        <v-btn @click="pushTitleArrs(newtitle)">sousin</v-btn>
+      <v-form :new-data="{ title: newtitle, text: newtext }">
+        <v-text-field
+          v-model="newtitle"
+          placeholder="タイトルを入力してください"
+        ></v-text-field>
+        <v-textarea
+          v-model="newtext"
+          placeholder="本文を入力してください"
+        ></v-textarea>
+        <v-btn @click="pushDataArrs(newData), log(newData)">sousin</v-btn>
       </v-form>
     </div>
-    <v-row justify="center">
-      <v-col
-        v-for="(titleArr, index) in titleArrs"
-        :key="index"
-        cols="12"
-        lg="3"
-      >
-        <v-card>
-          <v-card-text>title:{{ title.titleArrs }}</v-card-text>
-        </v-card>
-      </v-col>
-    </v-row>
-    title:{{ title }},<br /><br />
     newtitle:{{ newtitle }} <br /><br />
-    titlearrs:{{ titleArrs }}
-
-    <!-- HYOUJI:
-    <p v-for="hyoujiArr in hyoujiArrs" id="hyouji" :key="hyoujiArr">
-      {{ hyoujiArr }}
-    </p> -->
-
-    <!-- </v-col>
-    </v-row> -->
-    <!-- <v-btn id="nform" type="submit" href="/display"
-      >投稿する！<v-icon>mdi-upload</v-icon>
-    </v-btn> -->
+    newtitle:{{ newtext }} <br /><br />
+    newdata:{{ newData }} <br /><br />
+    dataArrs:{{ dataArrs }}<br /><br />
+    <v-container>
+      <v-row justify="center">
+        <v-col
+          v-for="(dataArr, index) in dataArrs"
+          :key="index"
+          cols="12"
+          lg="2"
+        >
+          <div class="display">
+            <Cards :title="dataArr.title" :text="dataArr.text"></Cards>
+          </div>
+        </v-col>
+      </v-row>
+    </v-container>
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, ref } from '@nuxtjs/composition-api'
-// import NovelSheet from '~/components/NovelSheet.vue'
+import { defineComponent, ref } from '@vue/composition-api'
+import Cards from '~/components/Cards.vue'
 export default defineComponent({
-  // components: { NovelSheet },
-  name: 'TitleArrs',
-  props: {
-    title: {
-      type: String,
-      default: 'form data',
-    },
-  },
+  name: 'DataArrs',
+  components: { Cards },
+
   setup() {
     const link = '#'
-    // const NovelDatas = ref([
+    // const newtitle = ref({ title: '' })
+    const newtitle = ref('')
+    const newtext = ref('')
+    const newData = ref({ title: '', text: '' })
+    // const titleArrs = ref([
     //   {
-    //    ntitle:'',
-    //    text:'',
-    //    nexplanation:'',
-    //    ntags:'',
-    //    sample:0,
-    //   }
+    //     title: '野田の日記',
+    //     text: '「あれは漫才じゃない」と言われた。僕もそう思う。',
+    //   },
+    //   { title: '呪術廻戦', text: '記録ー2018年6月 宮城県仙台市杉沢第三高校' },
     // ])
-    // const newTitle = ref('')
-    // const syuturyoku = ref([])
-    // const hyouji = (newTitle: string) => syuturyoku.value.push(newTitle)
-    // const log = () => console.log(syuturyoku.value)
-    // watch(newTitle, () => console.log(newTitle.value))
-    // watch(syuturyoku, () => console.log(syuturyoku.value))
-    // const show = computed(() => syuturyoku.value.map((title) => title + ','))
-    // const taitle = ref()
-    const newtitle = ref([{ title: '' }])
-    const titleArrs = ref([{ title: '野田の日記' }, { title: '呪術廻戦' }])
+    const dataArrs = ref([
+      {
+        title: '野田の日記',
+        text: '「あれは漫才じゃない」と言われた。僕もそう思う。',
+      },
+      { title: '呪術廻戦', text: '記録ー2018年6月　宮城県仙台市杉沢第三高校' },
+    ])
     // const titleArrs = ref(['野田の日記', '呪術廻戦'])
-    const pushTitleArrs = (newtitle: { title: string }) =>
-      titleArrs.value.push(newtitle)
-    // const hyoujiArrs = computed(() =>
-    //   titleArrs.value.map((hyoujiArr) => 'newtitle:' + hyoujiArr)
-    // )
+    // const pushDataArrs = (
+    //   newtitle: { title: string },
+    //   newtext: { text: string }
+    // ) => dataArrs.value.push(newData)
+    const pushDataArrs = (newData: { title: string; text: string }) =>
+      dataArrs.value.push(newData)
+    // const pushTitleArrs = (newtitle: string) => titleArrs.value.push(newtitle)
+
     return {
       link,
       newtitle,
-      // syuturyoku,
-      // hyoujiArrs,
-      // log,
-      // show,
-      // newtitle,
-      // taitle,
-      titleArrs,
-      pushTitleArrs,
+      newtext,
+      newData,
+      dataArrs,
+      // titleArrs,
+      pushDataArrs,
+      log: console.log,
     }
   },
 })
