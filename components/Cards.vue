@@ -1,9 +1,8 @@
 <template>
   <v-card elevation="2">
-    <div class="data">
-      <!-- <p>{{ title }}</p>
-      <p>{{ dataArr.text }}</p> -->
-    </div>
+    <div class="data"></div>
+    <p>{{ title }}</p>
+    <p>{{ text }}</p>
     <v-btn fab color="pink" dark small><v-icon dark>mdi-heart</v-icon></v-btn>
   </v-card>
 </template>
@@ -23,6 +22,5 @@ export default defineComponent({
       default: 'card data',
     },
   },
-  setup() {},
 })
 </script>
