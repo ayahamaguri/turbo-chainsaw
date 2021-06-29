@@ -10,7 +10,7 @@
           v-model="newtext"
           placeholder="本文を入力してください"
         ></v-textarea>
-        <v-btn @click="pushDataArrs(newData), log(newData)">sousin</v-btn>
+        <v-btn @click="pushDataArrs(newData), log(newtitle)">sousin</v-btn>
       </v-form>
     </div>
     newtitle:{{ newtitle }} <br /><br />
