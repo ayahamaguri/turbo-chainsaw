@@ -1,7 +1,7 @@
 <template>
   <div>
     <div id="formsample">
-      <v-form :new-data="{ title: newtitle, text: newtext }">
+      <v-form>
         <v-text-field
           v-model="newtitle"
           placeholder="タイトルを入力してください"
@@ -10,13 +10,10 @@
           v-model="newtext"
           placeholder="本文を入力してください"
         ></v-textarea>
-        <v-btn @click="pushDataArrs(newData), log(newtitle)">sousin</v-btn>
+        <v-btn @click="pushDataArrs(newData), log(newData)">sousin</v-btn>
       </v-form>
     </div>
-    newtitle:{{ newtitle }} <br /><br />
-    newtitle:{{ newtext }} <br /><br />
-    newdata:{{ newData }} <br /><br />
-    dataArrs:{{ dataArrs }}<br /><br />
+
     <v-container>
       <v-row justify="center">
         <v-col
@@ -37,22 +34,13 @@
 import { defineComponent, ref } from '@vue/composition-api'
 import Cards from '~/components/Cards.vue'
 export default defineComponent({
-  name: 'DataArrs',
   components: { Cards },
 
   setup() {
     const link = '#'
-    // const newtitle = ref({ title: '' })
     const newtitle = ref('')
     const newtext = ref('')
-    const newData = ref({ title: '', text: '' })
-    // const titleArrs = ref([
-    //   {
-    //     title: '野田の日記',
-    //     text: '「あれは漫才じゃない」と言われた。僕もそう思う。',
-    //   },
-    //   { title: '呪術廻戦', text: '記録ー2018年6月 宮城県仙台市杉沢第三高校' },
-    // ])
+    const newData = ref({ title: newtitle, text: newtext })
     const dataArrs = ref([
       {
         title: '野田の日記',
@@ -60,11 +48,6 @@ export default defineComponent({
       },
       { title: '呪術廻戦', text: '記録ー2018年6月　宮城県仙台市杉沢第三高校' },
     ])
-    // const titleArrs = ref(['野田の日記', '呪術廻戦'])
-    // const pushDataArrs = (
-    //   newtitle: { title: string },
-    //   newtext: { text: string }
-    // ) => dataArrs.value.push(newData)
     const pushDataArrs = (newData: { title: string; text: string }) =>
       dataArrs.value.push(newData)
     // const pushTitleArrs = (newtitle: string) => titleArrs.value.push(newtitle)
@@ -75,7 +58,6 @@ export default defineComponent({
       newtext,
       newData,
       dataArrs,
-      // titleArrs,
       pushDataArrs,
       log: console.log,
     }
