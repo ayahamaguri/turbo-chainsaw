@@ -18,7 +18,7 @@ export default defineComponent({
   props: {
     ntitle: {
       type: String,
-      default: '',
+      default: 'Ncards data',
     },
     text: {
       type: String,

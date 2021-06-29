@@ -33,35 +33,43 @@
     </v-container>
     <v-container>
       <v-row justify="center">
-        <!-- <v-col
-          v-for="(noveldata, index) in NovelData"
+        <v-col
+          v-for="(titleArr, index) in titleArrs"
           :key="index"
           cols="12"
           lg="2"
-        > -->
-        <div class="display">
-          <cards></cards>
-        </div>
-        <!-- </v-col> -->
+        >
+          <div class="display">
+            <Cards :title="titleArr.title"></Cards>
+          </div>
+        </v-col>
       </v-row>
     </v-container>
   </div>
 </template>
-<script type="ts">
-import { defineComponent, } from '@vue/composition-api'
+<script lang="ts">
+import { defineComponent, ref } from '@vue/composition-api'
 import Cards from '~/components/Cards.vue'
-
 export default defineComponent({
+  name: 'TitleArrs',
   components: { Cards },
-  setup(){
-      // const NovelDatas = ref([
-      //   {
-      //    sample:'',
-      //   }
-      // ])
-      // return{
-      //   NovelDatas
-      // }
+  props: {
+    title: {
+      type: String,
+      default: 'form data',
+    },
+  },
+  setup() {
+    // const newtitle = ref([{ title: '' }])
+    const newtitle = ref('')
+    const titleArrs = ref([{ title: '野田の日記' }, { title: '呪術廻戦' }])
+    const pushTitleArrs = (newtitle: { title: string }) =>
+      titleArrs.value.push(newtitle)
+    return {
+      newtitle,
+      titleArrs,
+      pushTitleArrs,
     }
+  },
 })
 </script>
