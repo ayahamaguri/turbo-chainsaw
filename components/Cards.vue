@@ -3,7 +3,7 @@
     <div class="data"></div>
     <p>{{ title }}</p>
     <p>{{ text }}</p>
-    <v-btn fab color="pink" dark small><v-icon dark>mdi-heart</v-icon></v-btn>
+    <v-btn icon color="pink" small><v-icon>mdi-heart-outline</v-icon></v-btn>
   </v-card>
 </template>
 <script lang="ts">
